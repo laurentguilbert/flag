@@ -1,0 +1,24 @@
+{
+  "name": "flag",
+  "main": "./lib/flag",
+  "version": "0.0.0",
+  "description": "Create comment flags to visually subdivide your code.",
+  "keywords": [
+    "flag",
+    "comment"
+  ],
+  "activationCommands": {
+    "atom-workspace": "flag:toggle"
+  },
+  "activationEvents": [
+    "flag:wrap"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/laurentguilbert/flag"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  }
+}
