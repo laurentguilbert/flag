@@ -15,17 +15,10 @@ module.exports =
   wrap: ->
     if editor = atom.workspace.getActiveTextEditor()
       grammar = editor.getGrammar()
-      selection = editor.getSelectedText()
-      startColumn = editor.getSelectedBufferRange().start.column
+      text = editor.getSelectedText()
 
       flagWidth = 50
       fill = ' '
-      if selection.length % 2 != 0
-        selection += ' '
-
-      paddingLength = (flagWidth - 2 - selection.length) // 2
-      padding = Array(paddingLength + 1).join(fill)
-      indent = Array(startColumn + 1).join(' ')
 
       switch grammar.name
         when 'HTML', 'CSS'
@@ -45,8 +38,19 @@ module.exports =
           firstLine = Array(flagWidth + 1).join('*')
           lastLine = Array(flagWidth + 1).join('*')
 
+      maxTextLength = flagWidth - side.length * 2
+      text = text.substring(0, maxTextLength)
+      if text.length % 2 != 0
+        text += ' '
+
+      paddingLength = (maxTextLength - text.length) // 2
+      padding = Array(paddingLength + 1).join(fill)
+
+      offsetLength = editor.getSelectedBufferRange().start.column
+      offset = Array(offsetLength + 1).join(' ')
+
       flag = firstLine + '\n'
-      flag += "#{indent}#{side}#{padding}#{selection}#{padding}#{side}\n"
-      flag += indent + lastLine
+      flag += "#{offset}#{side}#{padding}#{text}#{padding}#{side}\n"
+      flag += offset + lastLine
 
       editor.insertText(flag)
