@@ -28,15 +28,15 @@ module.exports =
       indent = Array(startColumn + 1).join(' ')
 
       switch grammar.name
-        when 'HTML', 'CSS'
+        when 'HTML'
           side = '*'
           firstLine = '<!' + Array(flagWidth - 1).join('-')
           lastLine = Array(flagWidth).join('-') + '>'
-        when 'JavaScript'
+        when 'JavaScript', 'CSS', 'SCSS', 'LESS'
           side = '*'
           firstLine = '/' + Array(flagWidth).join('*')
           lastLine = Array(flagWidth).join('*') + '/'
-        when 'Python'
+        when 'Python', 'CoffeeScript'
           side = '#'
           firstLine = Array(flagWidth + 1).join('#')
           lastLine = Array(flagWidth + 1).join('#')

@@ -17,3 +17,12 @@ It lets you easily create comment flags to visually subdivide your code.
 *                    My text                     *
 *************************************************/
 ```
+
+Supported languages as of today:
+- CoffeeScript
+- CSS
+- HTML
+- Javascript.
+- LESS
+- Python
+- SCSS
